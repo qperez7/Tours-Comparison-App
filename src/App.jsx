@@ -1,4 +1,4 @@
-import { React } from "react";
+//import React from "react";
 import ToursByComparison from "./components/Gallery";
 import "./components/App.css";
 

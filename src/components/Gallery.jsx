@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; // Gives error when I add React, {} from "react"
 
+const fetchTours = async () => {
+  await fetch("https://www.course-api.com/react-tours-project");
+};
 function ToursByComparison() {
   const [tours, setTours] = useState([]);
   const [loading, setLoading] = useState(true);
-  // Use a proxy to avoid CORS issues during development
-  const apiUrl = "https://course-api.com/react-tours-project";
-  const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 
   useEffect(() => {
-    fetch(apiUrl + proxyUrl)
+    fetchTours()
       .then((response) => response.json())
       .then((data) => {
         setTours(data);
@@ -16,10 +16,13 @@ function ToursByComparison() {
       })
       .catch((error) => {
         setLoading(false);
-        console.error("Failed to load tours. Please try again later.", error);
-      }, []);
-    if (loading) return <p>Loading all tours...</p>;
-    return (
+        return error;
+      });
+  });
+
+  if (loading) return <p>Loading all tours...</p>;
+  return (
+    (
       <div>
         <h2>Comparing Tours </h2>
         <ul>
@@ -34,8 +37,9 @@ function ToursByComparison() {
         <button onClick={() => tours.info}> Show More</button>
         <button onClick={() => tours}> Not Interested</button>
       </div> // Working on buttons
-    );
-  });
+    ),
+    [] //Dependancy array
+  );
 }
 
 export default ToursByComparison;
