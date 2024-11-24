@@ -1,0 +1,22 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 2fr));
+  background-color: bisque;
+  gap: 40px;
+  padding: 0;
+}
+.tour-card {
+  background-color: blanchedalmond;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: auto;
+  max-width: auto;
+}
+.center-text {
+  /* Centers the text and removes bold description */
+  text-align: center;
+  font-style: oblique;
+}
+.buttonColor {
+  background-color: goldenrod;
+}
